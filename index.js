@@ -4,8 +4,7 @@ const mongoose = require('mongoose');
 const routeAPI = require('./routes/api');
 
 let port = process.env.PORT || 5000;
-const uri = process.env.MONGODB_URI;
-const db = require(uri).mongoURI;
+const db = require('./config/key.js').mongoURI;
 mongoose
   .connect(db)
   .then(() => console.log('MongoDB connected...'))
