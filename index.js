@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const routeAPI = require('./routes/api');
 
 let port = process.env.PORT || 5000;
-const db = require('./config/keys').mongoURI;
+// const db = require('./config/key').mongoURI;
 
 mongoose
   .connect(process.env.MONGODB_URI)
