@@ -4,16 +4,10 @@ const mongoose = require('mongoose');
 const routeAPI = require('./routes/api');
 
 let port = process.env.PORT || 5000;
-const db = require("./config/keys").mongoURI;
+const db = require('./config/keys').mongoURI;
 
 mongoose
-  .connect(
-      process.env.MONGODB_URI || db
-      {
-          useNewUrlParser:true,
-          useUnifiedTopology: true,
-      },
-  )
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB connected...'))
   .catch((err) => console.log(err));
 
