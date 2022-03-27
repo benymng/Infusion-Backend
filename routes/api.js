@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const Article = require('../models/article');
 
-router.get('/test', async (req, res) => {
+router.get('/articles', async (req, res) => {
   const articles = await Article.find();
   res.send(articles);
 });
