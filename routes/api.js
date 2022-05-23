@@ -10,10 +10,10 @@ router.get('/articles', async (req, res) => {
 });
 
 // get information for specific article
-router.get('/:id', async (req, res) => {
-  const article = await newArticle.findById(req.params.id);
-  res.send(article);
-});
+// router.get('/:id', async (req, res) => {
+//   const article = await newArticle.findById(req.params.id);
+//   res.send(article);
+// });
 
 router.post('/', async (req, res, next) => {
   const article = new newArticle(req.body);
@@ -25,15 +25,23 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:slug', async (req, res) => {
   try {
-    const article = await newArticle.findByIdAndDelete(req.params.id);
+    const article = await newArticle.findOneAndDelete({
+      slug: req.params.slug,
+    });
 
     if (!article) response.status(404).send('No article found');
     res.status(200).send();
   } catch (error) {
     res.status(500).send(error);
   }
+});
+
+router.get('/:slug', async (req, res) => {
+  const article = await newArticle.findOne({ slug: req.params.slug });
+  if (article == null) console.log('Could not find slug');
+  res.send(article);
 });
 
 module.exports = router;
