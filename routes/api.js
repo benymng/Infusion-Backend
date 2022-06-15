@@ -44,4 +44,12 @@ router.get('/:slug', async (req, res) => {
   res.send(article);
 });
 
+router.put("/edit/:slug", async(req, res) => {
+  console.log(req.body)
+  let article = await newArticle.findOneAndUpdate({ slug: req.params.slug }, {title: req.body.title, description: req.body.description, markdown: req.body.markdown, imageUrl: req.body.imageUrl});
+  article = await newArticle.findOne({slug: req.params.slug });
+  res.send(article);
+  console.log("success")
+})
+
 module.exports = router;
