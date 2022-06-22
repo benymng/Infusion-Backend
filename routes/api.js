@@ -5,6 +5,7 @@ const router = express.Router();
 const Article = require("../models/article");
 const newArticle = require("../models/newArticle");
 const testimonial = require("../models/testimonials");
+const InfusionLogin = require("../models/InfusionLogin");
 
 router.get("/articles", async (req, res) => {
   const articles = await newArticle.find();
@@ -93,6 +94,22 @@ router.put("/edit/:slug", async (req, res) => {
   }
   res.send(article);
   console.log("success");
+});
+
+router.post("/login", async (req, res, next) => {
+  const newUser = new InfusionLogin(req.body);
+  try {
+    await newUser.save();
+    res.send(newUser);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+router.get("/admin/:name", async (req, res) => {
+  const user = await InfusionLogin.findOne({ name: req.params.name });
+  if (user == null) console.log("Could not find name");
+  res.send(user);
 });
 
 module.exports = router;
