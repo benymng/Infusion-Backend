@@ -44,7 +44,7 @@ router.post("/testimonials", async (req, res, next) => {
   }
 });
 
-router.delete("/testimonials/delete/:name", async (req, res) => {
+router.delete("/testimonial/delete/:name", async (req, res) => {
   try {
     const searchedTestimonial = await testimonial.findOneAndDelete({
       name: req.params.name,
@@ -93,6 +93,27 @@ router.put("/edit/:slug", async (req, res) => {
     console.log(e);
   }
   res.send(article);
+  console.log("success");
+});
+
+router.put("/testimonial/edit/:name", async (req, res) => {
+  console.log(req.body);
+  let updatedTestimonial = await testimonial.findOneAndUpdate(
+    { name: req.params.name },
+    {
+      name: req.body.name,
+      rating: req.body.rating,
+      description: req.body.description,
+      header: req.body.header,
+    }
+  );
+  updatedTestimonial = await testimonial.findOne({ slug: req.params.slug });
+  try {
+    updatedTestimonial.save();
+  } catch (e) {
+    console.log(e);
+  }
+  res.send(updatedTestimonial);
   console.log("success");
 });
 
