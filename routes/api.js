@@ -8,7 +8,7 @@ const testimonial = require("../models/testimonials");
 const InfusionLogin = require("../models/InfusionLogin");
 
 router.get("/articles", async (req, res) => {
-  const articles = await newArticle.find();
+  const articles = await newArticle.find().sort({ createdAt: -1 });
   res.send(articles);
 });
 
