@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const routeAPI = require("./routes/api");
 const routePortfolio = require("./routes/portfolio");
 const bodyParser = require("body-parser");
+const routeHopelandSystems = require("./routes/hopeland-systems");
 var cors = require("cors");
 
 app.use(cors());
@@ -25,6 +26,7 @@ app.get("/", (req, res) => {
 
 app.use("/api", routeAPI);
 app.use("/portfolio", routePortfolio);
+app.use("/hopeland-systems", routeHopelandSystems);
 
 app.listen(port, () => {
   console.log(`Listening on port http://localhost:${port}`);
