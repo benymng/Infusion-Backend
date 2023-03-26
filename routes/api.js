@@ -6,6 +6,7 @@ const Article = require("../models/article");
 const newArticle = require("../models/newArticle");
 const testimonial = require("../models/testimonials");
 const InfusionLogin = require("../models/InfusionLogin");
+const { Configuration, OpenAIApi } = require("openai");
 
 router.get("/articles", async (req, res) => {
   const articles = await newArticle.find().sort({ createdAt: -1 });
@@ -132,5 +133,7 @@ router.get("/admin/:name", async (req, res) => {
   if (user == null) console.log("Could not find name");
   res.send(user);
 });
+
+
 
 module.exports = router;

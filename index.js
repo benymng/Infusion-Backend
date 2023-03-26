@@ -5,6 +5,7 @@ const routeAPI = require("./routes/api");
 const routePortfolio = require("./routes/portfolio");
 const bodyParser = require("body-parser");
 const routeHopelandSystems = require("./routes/hopeland-systems");
+const routeOpenAI = require("./routes/openai");
 var cors = require("cors");
 
 app.use(cors());
@@ -17,7 +18,7 @@ app.use(function (req, res, next) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 3003;
 const db = require("./config/key").mongoURI;
 
 mongoose
@@ -32,6 +33,7 @@ app.get("/", (req, res) => {
 app.use("/api", routeAPI);
 app.use("/portfolio", routePortfolio);
 app.use("/hopeland-systems", routeHopelandSystems);
+app.use("/openai", routeOpenAI);
 
 app.listen(port, () => {
   console.log(`Listening on port http://localhost:${port}`);
