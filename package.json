@@ -16,13 +16,19 @@
     "dompurify": "^2.3.6",
     "dotenv": "^16.0.1",
     "express": "^4.17.3",
+    "html-to-latex": "^0.8.0",
     "jsdom": "^19.0.0",
     "marked": "^4.0.12",
     "mongoose": "^6.2.8",
+    "node-latex": "^3.1.0",
     "nodemon": "^2.0.22",
+    "path": "^0.12.7",
+    "pdf": "^0.1.0",
+    "pdflatex": "^0.0.1",
+    "pug": "^3.0.2",
     "slugify": "^1.6.5"
   },
   "engines": {
-    "node": "16.13.1"
+    "node": "18.16.0"
   }
 }

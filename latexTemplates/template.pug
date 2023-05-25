@@ -1,0 +1,30 @@
+doctype latex
+html(lang="en")
+  head
+    title Example PDF
+    meta(charset="utf-8")
+    style.
+      .page {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 12pt;
+        line-height: 1.5;
+        padding: 1in;
+      }
+      h1 {
+        font-size: 16pt;
+        font-weight: bold;
+        margin-bottom: 0.5em;
+      }
+      h2 {
+        font-size: 14pt;
+        font-weight: bold;
+        margin-bottom: 0.5em;
+      }
+      p {
+        margin-bottom: 1em;
+      }
+  body
+    .page
+      h1= title
+      h1=content
+

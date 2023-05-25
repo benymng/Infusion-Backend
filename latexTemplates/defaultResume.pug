@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    title Resume
+  body
+    h1 #{summary}
+
+    h2 Experience
+    each exp in experience
+      h3= exp.title
+      p= exp.company
+      p= exp.startDate + ' - ' + exp.endDate
+      ul
+        each resp in exp.responsibilities
+          li= resp
+
+    h2 Education
+    each edu in education
+      h3= edu.degree + ' in ' + edu.major
+      p= edu.school
+      p= edu.startDate + ' - ' + edu.endDate
+
+    h2 Skills
+    ul
+      each skill in skills
+        li= skill
+
